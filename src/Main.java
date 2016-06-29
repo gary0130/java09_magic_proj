@@ -1,16 +1,16 @@
 import java.util.*;
 
-import android.R.string;
-
 public class Main {
 	String name;
 	static int live = 0;// 離開無限迴圈
 	static Scanner scn = new Scanner(System.in);
 	static People gary = new People();// gary為玩家
 	static Enemy dragon = new Enemy();// dragon指敵人(以龍龍為基礎~)
+	static User user=new User();
 
 	public static void main(String[] args) {
 		// 主程序
+
 		about();
 		repeoplename(gary);
 		gary.firsthealth(100);
@@ -18,10 +18,13 @@ public class Main {
 
 		while (live != 1) {
 			// 主要流程
-			user();
+			user.user();
 			nowhealth(gary);
 			check();
-			//dragon.main();
+			// dragon.main();
+			if (live == 1) {
+				break;
+			}
 			enemyattack(dragon, gary);
 		}
 	}
@@ -61,9 +64,10 @@ public class Main {
 	public static void enemyattack(Enemy b, People a) {
 		// 敵人攻擊
 		a.health = a.health - b.main();
-		
+
 	}
 
+	/*
 	public static void user() {
 		// 使用者操作
 		System.out.println("行動");
@@ -118,7 +122,7 @@ public class Main {
 		}
 
 	}
-
+	*/
 	public static void check() {
 		// 檢查人物
 		if (gary.health <= 0) {
@@ -133,49 +137,12 @@ public class Main {
 
 }
 
-class People {
-	// 人的屬性
-	String name;
-	int health, maxhealth;
-	int level;
-	int atk = 30;
-	String type = "一般人";
-
-	// 先不要用newpeople!!
-	void newpeople(String name1, int health1) {
-		name = name1;
-		health = health1;
-		maxhealth = health1;
-
-	}
-
-	String name() {
-		// 回傳名子
-		return name;
-	}
-
-	int health() {
-		return health;
-	}
-
-	// 設定最大hp
-	void firsthealth(int health1) {
-		health = health1;
-		maxhealth = health1;
-	}
-
-	int attack() {
-		return atk;
-	}
-
-}
-
 class Teammate extends People {
 	static String type = "隊友";
 }
 
 class Enemy {
-	String name = "彥龍";
+	String name = "龍龍";
 	int atk = 50;
 	int health = 50;
 	int live = 0;
@@ -183,22 +150,20 @@ class Enemy {
 	int main() {
 		// 主要行為
 		about();
-		int i=0;
+		int i = 0;
 		if (health > 0) {
 			attack();
-			i= atk;
+			i = atk;
 		} else if (health <= 0) {
 			live = 1;
 			System.out.println(name + "死了");
-			i= 0;
+			i = 0;
 		}
 		return i;
 	}
 
-	
-
 	void about() {
-		System.out.println(name + " 攻" + atk + " 血" + health);
+		System.out.println("敵人" + name + " 攻" + atk + " 血" + health);
 	}
 
 	int attack() {
@@ -206,3 +171,24 @@ class Enemy {
 	}
 
 }
+
+/*
+ * class People { // 人的屬性 String name; int health, maxhealth; int level; int atk
+ * = 30; String type = "一般人";
+ * 
+ * // 先不要用newpeople!! void newpeople(String name1, int health1) { name = name1;
+ * health = health1; maxhealth = health1;
+ * 
+ * }
+ * 
+ * String name() { // 回傳名子 return name; }
+ * 
+ * int health() { return health; }
+ * 
+ * // 設定最大hp void firsthealth(int health1) { health = health1; maxhealth =
+ * health1; }
+ * 
+ * int attack() { return atk; }
+ * 
+ * }
+ */
