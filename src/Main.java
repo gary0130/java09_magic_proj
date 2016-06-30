@@ -13,12 +13,15 @@ public class Main {
 
 		about();
 		repeoplename(gary);
+		//gary.name="gary";
 		gary.firsthealth(100);
 		aboutpeople(gary);
+		//Gui_user.main(args);//暫時還不能用
 
 		while (live != 1) {
 			// 主要流程
 			user.user();
+			//user.Gui();
 			nowhealth(gary);
 			check();
 			// dragon.main();
@@ -67,62 +70,7 @@ public class Main {
 
 	}
 
-	/*
-	public static void user() {
-		// 使用者操作
-		System.out.println("行動");
-		System.out.print(">");
-		int i;
-		try {
-			i = scn.nextInt();
-
-			switch (i) {
-			case 1:
-				// 攻擊
-				peopleattack(gary, dragon);
-				break;
-			case 2:
-				// 上
-				break;
-			case 3:
-				// 道具
-				break;
-			case 4:
-				// 左
-				break;
-			case 5:
-				// 確定
-				break;
-			case 6:
-				// 右
-				break;
-			case 7:
-				// 狀態
-				break;
-			case 8:
-				// 下
-				break;
-			case 9:
-				// 設定
-				break;
-
-			case 99:
-				// 自殺
-				gary.health = 0;
-				break;
-			default:
-				System.out.println("無法辨識");
-			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.out.println("無法辨識");
-
-			live = 2;
-
-		}
-
-	}
-	*/
+	
 	public static void check() {
 		// 檢查人物
 		if (gary.health <= 0) {
@@ -137,58 +85,7 @@ public class Main {
 
 }
 
-class Teammate extends People {
-	static String type = "隊友";
-}
 
-class Enemy {
-	String name = "龍龍";
-	int atk = 50;
-	int health = 50;
-	int live = 0;
 
-	int main() {
-		// 主要行為
-		about();
-		int i = 0;
-		if (health > 0) {
-			attack();
-			i = atk;
-		} else if (health <= 0) {
-			live = 1;
-			System.out.println(name + "死了");
-			i = 0;
-		}
-		return i;
-	}
 
-	void about() {
-		System.out.println("敵人" + name + " 攻" + atk + " 血" + health);
-	}
 
-	int attack() {
-		return atk;
-	}
-
-}
-
-/*
- * class People { // 人的屬性 String name; int health, maxhealth; int level; int atk
- * = 30; String type = "一般人";
- * 
- * // 先不要用newpeople!! void newpeople(String name1, int health1) { name = name1;
- * health = health1; maxhealth = health1;
- * 
- * }
- * 
- * String name() { // 回傳名子 return name; }
- * 
- * int health() { return health; }
- * 
- * // 設定最大hp void firsthealth(int health1) { health = health1; maxhealth =
- * health1; }
- * 
- * int attack() { return atk; }
- * 
- * }
- */

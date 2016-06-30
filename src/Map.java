@@ -11,7 +11,14 @@ public class Map {
 
 	public void bornlocate() {
 		// 設置出生點
-
+		User.locx=rand();
+		User.locy=rand();
+	}
+	int rand(){
+		//產生亂數
+		int i;
+		i=(int)(Math.random())*area+1;
+		return i;
 	}
 
 }
