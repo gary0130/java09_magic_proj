@@ -1,34 +1,43 @@
 import java.util.*;
 
+import android.R.string;
+
 public class Main {
 	String name;
 	static int live = 0;// 離開無限迴圈
 	static Scanner scn = new Scanner(System.in);
 	static People gary = new People();// gary為玩家
 	static Enemy dragon = new Enemy();// dragon指敵人(以龍龍為基礎~)
-	static User user=new User();
+	static User user = new User();
+	static Map map = new Map();
 
 	public static void main(String[] args) {
 		// 主程序
 
 		about();
+		map.createmap();
 		repeoplename(gary);
-		//gary.name="gary";
+		// gary.name="gary";
 		gary.firsthealth(100);
+		map.bornlocate();
 		aboutpeople(gary);
-		//Gui_user.main(args);//暫時還不能用
+		// Gui_user.main(args);//暫時還不能用
 
 		while (live != 1) {
 			// 主要流程
 			user.user();
-			//user.Gui();
+			// user.Gui();
 			nowhealth(gary);
+			nowlocate();
+			map.mapcheck();
 			check();
 			// dragon.main();
 			if (live == 1) {
 				break;
 			}
-			enemyattack(dragon, gary);
+			if (dragon.live != 1) {
+				enemyattack(dragon, gary);
+			}
 		}
 	}
 
@@ -56,7 +65,12 @@ public class Main {
 	public static void nowhealth(People h) {
 		int i = h.health;
 		int j = h.maxhealth;
-		System.out.println("當前血量:" + i + "/" + j);
+		System.out.print("當前血量:" + i + "/" + j + " ");
+	}
+
+	public static void nowlocate() {
+		String i = "當前位置" + user.locx + "," + user.locy;
+		System.out.println(i);
 	}
 
 	public static void peopleattack(People a, Enemy b) {
@@ -70,7 +84,6 @@ public class Main {
 
 	}
 
-	
 	public static void check() {
 		// 檢查人物
 		if (gary.health <= 0) {
@@ -84,8 +97,3 @@ public class Main {
 	}
 
 }
-
-
-
-
-

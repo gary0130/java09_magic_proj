@@ -1,6 +1,6 @@
 class Enemy {
 	String name = "龍龍";
-	int atk = 50;
+	int atk = 10;
 	int health = 50;
 	int live = 0;
 

@@ -19,28 +19,28 @@ class User {
 				break;
 			case 2:
 				// 上
-				locx=locx+1;
+				locy=locy+1;
 				break;
 			case 3:
 				// 道具
 				break;
 			case 4:
 				// 左
-				locy=locy-1;
+				locx=locx-1;
 				break;
 			case 5:
 				// 確定
 				break;
 			case 6:
 				// 右
-				locy=locy+1;
+				locx=locx+1;
 				break;
 			case 7:
 				// 狀態
 				break;
 			case 8:
 				// 下
-				locx=locx-1;
+				locy=locy-1;
 				break;
 			case 9:
 				// 設定

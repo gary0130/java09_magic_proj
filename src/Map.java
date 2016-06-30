@@ -11,14 +11,35 @@ public class Map {
 
 	public void bornlocate() {
 		// 設置出生點
-		User.locx=rand();
-		User.locy=rand();
+		User.locx = rand();
+		User.locy = rand();
 	}
-	int rand(){
-		//產生亂數
+
+	int rand() {
+		// 產生亂數,用於出生點
 		int i;
-		i=(int)(Math.random())*area+1;
+		i = (int) ((Math.random()) * area) + 1;
 		return i;
+	}
+
+	void mapcheck() {
+		if (User.locx == 0 || User.locx == area) {
+			System.out.println("地圖邊界!!");
+			
+		}
+		if (User.locy == 0 || User.locy == area) {
+			System.out.println("地圖邊界!!");
+			
+		}
+		if (User.locx < 0 || User.locx > area) {
+			System.out.println("超出地圖邊界!!");
+			Main.live=1;
+		}
+		if (User.locy < 0 || User.locy > area) {
+			System.out.println("超出地圖邊界!!");
+			Main.live=1;
+		}
+
 	}
 
 }
