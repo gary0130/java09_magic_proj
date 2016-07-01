@@ -1,6 +1,7 @@
 import java.util.*;
 
 import android.R.string;
+import android.text.TextDirectionHeuristic;
 
 public class Main {
 	String name;
@@ -10,6 +11,7 @@ public class Main {
 	static Enemy dragon = new Enemy();// dragon指敵人(以龍龍為基礎~)
 	static User user = new User();
 	static Map map = new Map();
+	static Gui_user gui =new Gui_user();
 
 	public static void main(String[] args) {
 		// 主程序
@@ -17,16 +19,18 @@ public class Main {
 		about();
 		map.createmap();
 		repeoplename(gary);
-		// gary.name="gary";
+		 //gary.name = "gary";
 		gary.firsthealth(100);
 		map.bornlocate();
 		aboutpeople(gary);
-		// Gui_user.main(args);//暫時還不能用
+		//Gui_user.main(args);// 暫時還不能用
 
 		while (live != 1) {
 			// 主要流程
 			user.user();
-			// user.Gui();
+		//	gui.Gui();
+
+			
 			nowhealth(gary);
 			nowlocate();
 			map.mapcheck();
@@ -38,7 +42,10 @@ public class Main {
 			if (dragon.live != 1) {
 				enemyattack(dragon, gary);
 			}
+			Gui_user.check = 0;
+
 		}
+
 	}
 
 	public static void about() {
